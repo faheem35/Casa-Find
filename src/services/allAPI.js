@@ -67,3 +67,25 @@ export const getBookmarksAPI = (reqHeader) => {
 export const getUserBookmarksAPI = (reqHeader) => {
   return commonAPI('GET', `${SERVER_URL}/bookmark`, {}, reqHeader);
 };
+
+
+// Delete any property (Admin)
+export const adminRemovePropertyAPI = async (id, reqHeader) => {
+  return await commonAPI("DELETE", `${SERVER_URL}/admin/properties/${id}/remove`, {}, reqHeader);
+}
+
+// Edit any property (Admin)
+export const adminEditPropertyAPI = async (id, reqBody, reqHeader) => {
+  return await commonAPI("PUT", `${SERVER_URL}/admin/properties/${id}/edit`, reqBody, reqHeader);
+}
+
+//userlist (Admin)
+export const userlistAPI=async()=>{
+          return await commonAPI("GET",`${SERVER_URL}/admin/userlist`,{})
+}
+
+//user edit (Admin)
+export const usereditAPI = async (id, reqBody) => {
+          return await commonAPI("PATCH", `${SERVER_URL}/admin/useredit/${id}`, reqBody);
+      };
+

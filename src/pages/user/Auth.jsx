@@ -197,23 +197,42 @@ const Auth = ({ insideRegister }) => {
 
     try {
       const result = await loginAPI(inputData)
-      if (result.status == 200) {
-        sessionStorage.setItem("user", JSON.stringify(result.data.user))
-        sessionStorage.setItem("token", result.data.token)
-        setIsAuthorised(true)
-        setIsLogin(true)
-        setTimeout(() => {
-          setInputData({ username: "", email: "", password: "" })
-          navigate("/")
-          setIsLogin(false)
-        }, 2000)
-      } else if (result.status === 400) {
-        alert("User not found")
-      } else if (result.status === 403) {
-        alert("Admins are not allowed to log in from this portal")
-      } else if (result.status === 401 || result.status === 404) {
-        alert("Incorrect email or password")
-      }
+      // if (result.status == 200) {
+      //   sessionStorage.setItem("user", JSON.stringify(result.data.user))
+      //   sessionStorage.setItem("token", result.data.token)
+      //   setIsAuthorised(true)
+      //   setIsLogin(true)
+      //   setTimeout(() => {
+      //     setInputData({ username: "", email: "", password: "" })
+      //     navigate("/")
+      //     setIsLogin(false)
+      //   }, 2000)
+      // } else if (result.status === 400) {
+      //   alert("User not found")
+      // } else if (result.status === 403) {
+      //   alert("Admins are not allowed to log in from this portal")
+      // } else if (result.status === 401 || result.status === 404) {
+      //   alert("Incorrect email or password")
+      // }
+      if (result.status === 200) {
+  sessionStorage.setItem("user", JSON.stringify(result.data.user));
+  sessionStorage.setItem("token", result.data.token);
+  setIsAuthorised(true);
+  setIsLogin(true);
+  setTimeout(() => {
+    setInputData({ username: "", email: "", password: "" });
+    navigate("/");
+    setIsLogin(false);
+  }, 2000);
+} else if (result.status === 403) {
+  const message = result?.data?.message || "Access denied.";
+  alert(message);
+} else if (result.status === 401) {
+  alert("Incorrect email or password");
+} else {
+  alert("Login failed. Please try again.");
+}
+
     } catch (err) {
       console.log(err)
       alert("Login failed. Please try again.")

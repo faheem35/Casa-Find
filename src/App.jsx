@@ -88,6 +88,9 @@ import BookmarkedProperties from './pages/user/BookmarkedProperties';
 import { tokenAuthContext } from './contexts/AuthContextAPI';
 import About from './pages/user/About';
 import Contact from './pages/user/Contact';
+import ManageProperties from './pages/admin/ManageProperties';
+import ManageUsers from './pages/admin/ManageUsers';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 const App = () => {
   const { isAuthorised, setIsAuthorised } = useContext(tokenAuthContext);
@@ -122,6 +125,10 @@ const App = () => {
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Auth insideRegister={true} />} />
         <Route path="/adminLogin" element={<AdminAuth />} />
+         <Route path="/manageProperties" element={<ManageProperties />} />
+          <Route path="/manageUsers" element={<ManageUsers />} />
+          <Route path="/adminDashboard" element={<AdminDashboard />} />
+
 
         {/* Catch-all */}
         <Route path="/*" element={<Pnf />} />

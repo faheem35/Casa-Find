@@ -96,7 +96,7 @@ const View = () => {
         {userProperties?.length > 0 ? (
           <div className="space-y-6" >
             {userProperties.map(property => (
-              <div key={property?._id} className="group bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 rounded-xl p-4 sm:p-6 transition-all duration-200 hover:shadow-md"  style={{ willChange: "transform", background: "oklch(97% 0.014 254.604)" }}>
+              <div key={property?._id} className="group bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 rounded-xl p-4 sm:p-6 transition-all duration-200 hover:shadow-md"  style={{  background: "oklch(97% 0.014 254.604)" }} >
                 <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
                   {/* Property Image */}
                   <div className="flex-shrink-0">
