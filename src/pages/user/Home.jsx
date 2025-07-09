@@ -427,7 +427,7 @@ style={{ background: "oklch(93.2% 0.032 255.585)" }}
         </div>
       </section>
 
-      <style jsx>{`
+      <style >{`
         .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;
